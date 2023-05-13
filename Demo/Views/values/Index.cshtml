@@ -21,25 +21,10 @@
                 dataType: "text",
                 error: function (xhr) {
                     tableCreation();
-                   // alert('Request Status: ' + xhr.status + ' Status Text: ' + xhr.statusText + ' ' + xhr.responseText);
                 },
                 success: function (resultData) {
                     alert("Save Complete " + resultData);
-                    value = 10;
-                    var table = "<table><tbody><thead><tr><td></td>";
-                  
-                    for (var i = 1; i <= 10; i++)
-                    {
-                        table += "<td>" + i + "</td>";
-                    }
-            table += "<td>" + "sum" + "</td><td>" + "avg" + "</td></tr></thead>";
-                    for (var i = 1; i <=10; i++)
-                    {
-                        table+=rowCreation(i,value)
-                    }
-                    table += "</table></tbody>";
-                    document.getElementById("tablediv").innerHTML = table;
-                    
+                    tableCreation();
                 }
             });
         }
@@ -83,7 +68,6 @@
             table += "<td>" + sum + "</td>";
             table += "<td>" + sum/value + "</td></tr>";
             return table;
-           // console.log(table)
             
         }
     </script>

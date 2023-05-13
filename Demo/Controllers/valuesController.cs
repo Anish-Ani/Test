@@ -26,7 +26,7 @@ namespace Demo.Controllers
             values = db.values.ToList();
             return values;
         }
-          [HttpPost]
+        [HttpPost]
         public String Addvalue(String value)
         {
             String uid = Guid.NewGuid().ToString("N");
