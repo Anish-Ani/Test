@@ -1,0 +1,104 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        var value = 0;
+        function process() {
+             value = $('#fname').val();
+
+            $.ajax({
+                type: "POST",
+                url: "Addvalue",
+                data: { "value": value },
+                dataType: "text",
+                error: function (xhr) {
+                    tableCreation();
+                   // alert('Request Status: ' + xhr.status + ' Status Text: ' + xhr.statusText + ' ' + xhr.responseText);
+                },
+                success: function (resultData) {
+                    alert("Save Complete " + resultData);
+                    value = 10;
+                    var table = "<table><tbody><thead><tr><td></td>";
+                  
+                    for (var i = 1; i <= 10; i++)
+                    {
+                        table += "<td>" + i + "</td>";
+                    }
+            table += "<td>" + "sum" + "</td><td>" + "avg" + "</td></tr></thead>";
+                    for (var i = 1; i <=10; i++)
+                    {
+                        table+=rowCreation(i,value)
+                    }
+                    table += "</table></tbody>";
+                    document.getElementById("tablediv").innerHTML = table;
+                    
+                }
+            });
+        }
+        function tableCreation() {
+            var value = $('#fname').val();
+           // value = 10;
+            var table = "<table border='1' style='border-collapse:collapse'><tbody><thead><tr><td></td>";
+
+            for (var i = 1; i <= value; i++) {
+                table += "<td>" + i + "</td>";
+            }
+            table += "<td>" + "sum" + "</td><td>" + "avg" + "</td></tr></thead>";
+            for (var i = 1; i <= value; i++) {
+                table += rowCreation(i, value)
+            }
+            table += "</tbody></table>";
+            document.getElementById("tablediv").innerHTML = table;
+        }
+        function rowCreation(i, value) {
+            var table = "";
+            var sum = 0;
+            table =  "<tr>"; 
+            for (var j = 1; j <= value; j++) {
+                if (i == 0) {
+                    table += "<td>"+j+"</td>";
+                }
+                else {
+                    if (j == 1) {
+                        table += "<td>" + i * j + "</td>";
+                        table += "<td>" + i * j + "</td>";
+                    }
+                    else {
+                        table += "<td>" + i * j + "</td>";
+                    }
+                }
+                
+                var ans = i * j;
+                sum += ans;
+
+            }
+            table += "<td>" + sum + "</td>";
+            table += "<td>" + sum/value + "</td></tr>";
+            return table;
+           // console.log(table)
+            
+        }
+    </script>
+</head>
+<body>
+
+
+    <div>
+        <h1>Home Test</h1>
+        <input type="text" id="fname" name="fname">
+        <input type="submit" value="submit" onclick="process()">
+    </div>
+     <br>
+            <div id="tablediv"></div>
+   
+
+</body>
+</html>
