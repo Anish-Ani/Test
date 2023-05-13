@@ -12,7 +12,7 @@
     <script>
         var value = 0;
         function process() {
-            value = $('#fname').val();
+            value = $('#value').val();
             console.log(Number.isInteger(value))
             if (value%1!=0)
             {
@@ -37,7 +37,6 @@
         }
         function tableCreation() {
             var value = $('#fname').val();
-           // value = 10;
             var table = "<h3>Result</h3><table border='1' style='border-collapse:collapse'><tbody><thead><tr><td></td>";
 
             for (var i = 1; i <= value; i++) {
@@ -84,7 +83,7 @@
 
     <div>
         <h1>Home Test</h1>
-        <input type="text" id="fname" name="fname">
+        <input type="text" id="value" name="value">
         <input type="submit" value="submit" onclick="process()">
     </div>
      <br>
