@@ -1,1 +1,1 @@
-﻿
+﻿truncate table value

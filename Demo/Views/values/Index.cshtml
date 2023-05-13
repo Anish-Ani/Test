@@ -13,7 +13,7 @@
         var value = 0;
         function process() {
             value = $('#value').val();
-            console.log(Number.isInteger(value))
+            console.log(value)
             if (value%1!=0)
             {
                 alert('Please Enter Whole Number')
@@ -22,7 +22,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "Addvalue",
+                url: "/values/Addvalue",
 
                 data: { "value": value },
                 dataType: "text",
@@ -36,7 +36,7 @@
             });
         }
         function tableCreation() {
-            var value = $('#fname').val();
+            var value = $('#value').val();
             var table = "<h3>Result</h3><table border='1' style='border-collapse:collapse'><tbody><thead><tr><td></td>";
 
             for (var i = 1; i <= value; i++) {
